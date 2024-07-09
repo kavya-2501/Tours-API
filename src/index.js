@@ -18,7 +18,7 @@ app.use('/api',apiRouter);
 app.use(errorHandler);
 
 app.listen(PORT,async()=>{
-    console.log(`Server running on PORT ${PORT}`);
+    console.log(`Server running successfully on PORT ${PORT}`);
     await connectToDB();
     console.log('Successfully connected to DB')
 });
