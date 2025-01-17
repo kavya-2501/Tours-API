@@ -43,30 +43,17 @@ class ToursRepository{
             name:tourdata.name,
             rating:tourdata.rating,
             price:tourdata.price
-        },{new:true})
+        },{
+        new:true,
+        runValidator:true
+    })
         console.log("updated successfully")
         return updatedTour;
 
     }
 
     async getTourStats(){
-        const tourstats=await Tour.aggregate([
-            {
-                $match:{ratingsAverage:{$gte:1}}
-            },
-            {
-                $group:{
-                    _id:'$difficulty',
-                    numTours:{$sum:1},
-                    numRatings:{$sum:'$ratingsQuantity'},
-                    avgRatings:{$avg:'$ratingsAverage'},
-                    avgPrice:{$avg:'$price'},
-                    minPrice:{$min:'$price'},
-                    maxPrice:{$max:'$price'},
-                }
-            }
-        ])
-        console.log(tourstats)
+       
         return tourstats;
     }
 
